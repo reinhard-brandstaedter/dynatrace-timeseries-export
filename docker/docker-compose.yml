@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+  tsexport:
+    image: pme/tsexport:0.1
+    container_name: tsexport
+    build:
+      context: ./tsexport
+    restart: always
+    env_file:
+      - ./dtproperties.env
+    environment:
+      - "PYTHONUNBUFFERED=1"
+      
+  entitycache:
+    image: pme/entitycache:0.1
+    container_name: entitycache
+    build:
+      context: ./entitycache
+    restart: always
+    environment:
+      - "PYTHONUNBUFFERED=1"
+    
+        
+  infraexport:
+    image: pme/infraexport:0.1
+    container_name: infraexport
+    build:
+      context: ./infraexport
+    restart: always
+    env_file:
+      - ./dtproperties.env
+    environment:
+      - "PYTHONUNBUFFERED=1"
+      
